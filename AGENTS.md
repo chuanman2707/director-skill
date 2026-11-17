@@ -33,3 +33,17 @@ Bộ skill nằm trong [`skills/genres/japanese-samurai/`](skills/genres/japanes
 | Đã có chất liệu cảnh và cần chọn lúc cắt, giữ ánh mắt bao lâu hoặc trả về phản ứng nào sau một câu thoại? | [`samurai-nhip-dung`](skills/genres/japanese-samurai/samurai-nhip-dung/SKILL.md) | Bản nhịp dựng với điểm vào, điểm cắt và phản ứng cần giữ |
 
 Ví dụ, với yêu cầu **“Lên shot list cảnh một người đưa thư nhận ra thầy cũ ở bến đò”**, nếu vị trí hai người còn bỏ ngỏ, dùng `samurai-moi-truong` để đặt cọc buộc đò và lối lên bờ, rồi dùng `samurai-goc-may` để chọn lúc lộ gương mặt người thầy. Nếu đã có bản dựng và chỉ cần biết nên giữ cái cúi đầu bao lâu, vào thẳng `samurai-nhip-dung`. Khi đích đến là prompt ảnh hoặc video, chuyển các quyết định đã chốt sang `image` hoặc `video`.
+
+## Phim sci-fi tận thế và hậu tận thế
+
+Dùng [bộ skill sci-fi tận thế](skills/genres/post-apocalyptic-sci-fi/) khi sự sụp đổ của xã hội, hạ tầng bỏ hoang hoặc sự sống sau thảm họa chi phối cảnh phim. Các skill mang tên `scifi-hau-chien-*` vì được rút ra từ *Last Day of War*. Có thể áp dụng cho một thế giới sau ngập lụt hay sơ tán khi brief có cùng bài toán. Chọn theo quyết định còn thiếu trong yêu cầu.
+
+| Khi người dùng cần quyết định | Gọi skill | Đầu ra |
+|---|---|---|
+| Ai từng cần công trình này? Vì sao nó vẫn hoạt động sau khi con người rời đi, và điều gì khiến nó dừng? | [`scifi-hau-chien-boi-canh`](skills/genres/post-apocalyptic-sci-fi/scifi-hau-chien-boi-canh/SKILL.md) | Tiền đề, quy luật vận hành và các dấu vết để người xem suy ra lịch sử thế giới |
+| Nước ngập tới đâu, chỗ nào bị gỉ, sinh vật bám vào đâu? Những chi tiết nào phải khớp giữa hai góc? | [`scifi-hau-chien-moi-truong`](skills/genres/post-apocalyptic-sci-fi/scifi-hau-chien-moi-truong/SKILL.md) | Brief dựng địa điểm với bố trí không gian, vật liệu, mốc tỷ lệ và chi tiết cần giữ nhất quán |
+| Máy quay đứng đâu để đọc được độ lớn của phế tích hoặc thấy một chi tiết đúng lúc? | [`scifi-hau-chien-goc-may`](skills/genres/post-apocalyptic-sci-fi/scifi-hau-chien-goc-may/SKILL.md) | Shot list hoặc storyboard có cỡ cảnh, vị trí máy, mốc bố cục và chuyển động trong khuôn |
+| Cảnh đang yên bình cần chuyển sang bất an, hoặc từ lạnh lẽo sang có sức sống, bằng tín hiệu nào? | [`scifi-hau-chien-khong-khi`](skills/genres/post-apocalyptic-sci-fi/scifi-hau-chien-khong-khi/SKILL.md) | Diễn biến cảm xúc theo nhịp, gắn với nguồn sáng, màu, âm thanh tại cảnh và khoảng lặng |
+| Đã có shot hoặc footage và cần chọn thứ tự, điểm cắt, thời gian giữ hình hay thời điểm lặp lại? | [`scifi-hau-chien-nhip-dung`](skills/genres/post-apocalyptic-sci-fi/scifi-hau-chien-nhip-dung/SKILL.md) | Bảng dựng có mốc vào–ra và điều người xem hiểu thêm sau mỗi cú cắt |
+
+Ví dụ, với **“Một trạm bơm vẫn chạy sau trận lụt. Viết cảnh 20 giây trong hai góc máy”**, dùng `scifi-hau-chien-boi-canh` để chốt điều gì còn kích hoạt bơm, rồi dùng `scifi-hau-chien-goc-may` để chia hai khuôn. Nếu đã có hai clip và người dựng chỉ hỏi nên cắt lúc nào, gọi thẳng `scifi-hau-chien-nhip-dung`. Khi cần xuất prompt cho model, đưa các quyết định đã chốt sang `image` hoặc `video`.

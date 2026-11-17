@@ -27,6 +27,8 @@ Xem cách chọn và phối hợp các skill trong [AGENTS.md](AGENTS.md).
 
 [Phim samurai Nhật Bản](skills/genres/japanese-samurai/) gồm năm skill về bối cảnh và thân phận, môi trường và mỹ thuật, góc máy, không khí và nhịp dựng. Xem [bảng chọn skill theo đầu ra](AGENTS.md#phim-samurai-nhật-bản) để gọi từng skill riêng hoặc phối hợp khi dựng một cảnh.
 
+[Phim sci-fi tận thế và hậu tận thế](skills/genres/post-apocalyptic-sci-fi/) gồm năm skill về quy luật thế giới, môi trường, góc máy, không khí và nhịp dựng. [Xem cách chọn từng skill và ví dụ phối hợp](AGENTS.md#phim-sci-fi-tận-thế-và-hậu-tận-thế).
+
 ## Cài đặt
 
 Lấy repo về bằng GitHub CLI.
