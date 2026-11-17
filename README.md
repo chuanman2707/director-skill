@@ -23,15 +23,19 @@ Các ví dụ Diablo IV lấy số shot từ mục *Breakdown* của *Diablo IV 
 
 Xem cách chọn và phối hợp các skill trong [AGENTS.md](AGENTS.md).
 
+## Skill theo thể loại
+
+[Phim samurai Nhật Bản](skills/genres/japanese-samurai/) gồm năm skill về bối cảnh và thân phận, môi trường và mỹ thuật, góc máy, không khí và nhịp dựng. Xem [bảng chọn skill theo đầu ra](AGENTS.md#phim-samurai-nhật-bản) để gọi từng skill riêng hoặc phối hợp khi dựng một cảnh.
+
 ## Cài đặt
 
-Lấy repo về (repo private, cần quyền đọc):
+Lấy repo về bằng GitHub CLI.
 
 ```bash
 gh repo clone chuanman2707/director-skill
 ```
 
-Rồi chép các thư mục con trong `skills/` vào nơi app đọc skill:
+Chép từng thư mục có `SKILL.md` vào nơi app đọc skill. Với nhóm samurai, chép năm thư mục `samurai-*` bên trong `skills/genres/japanese-samurai/`.
 
 | App | Dùng cho mọi dự án (global) | Chỉ một dự án |
 |---|---|---|
@@ -39,15 +43,17 @@ Rồi chép các thư mục con trong `skills/` vào nơi app đọc skill:
 | Codex (CLI, app, IDE) | `~/.agents/skills/<tên-skill>/` (bản cũ: `~/.codex/skills/`) | `<dự án>/.agents/skills/<tên-skill>/` |
 | Antigravity | `~/.gemini/config/skills/<tên-skill>/` (bản cũ: `~/.gemini/antigravity/skills/`) | `<dự án>/.agents/skills/<tên-skill>/` |
 
-### Cài cả bộ 9 skill (Global cho cả 3 app)
+### Cài cả bộ skill cho cả ba ứng dụng
 
 Windows (PowerShell):
 
 ```powershell
-$src = ".\director-skill\skills\*"
+$skills = Get-ChildItem -LiteralPath ".\director-skill\skills" -Recurse -File -Filter SKILL.md
 foreach ($d in "$HOME\.claude\skills", "$HOME\.agents\skills", "$HOME\.gemini\config\skills") {
   New-Item -ItemType Directory -Force $d | Out-Null
-  Copy-Item -Recurse -Force $src $d
+  foreach ($skill in $skills) {
+    Copy-Item -LiteralPath $skill.Directory.FullName -Destination $d -Recurse -Force
+  }
 }
 ```
 
@@ -55,7 +61,11 @@ macOS / Linux:
 
 ```bash
 for d in ~/.claude/skills ~/.agents/skills ~/.gemini/config/skills; do
-  mkdir -p "$d" && cp -R director-skill/skills/* "$d"/
+  mkdir -p "$d" || exit 1
+  for guide in director-skill/skills/*/SKILL.md director-skill/skills/genres/*/*/SKILL.md; do
+    [ -f "$guide" ] || continue
+    cp -R "$(dirname "$guide")" "$d/" || exit 1
+  done
 done
 ```
 
@@ -63,7 +73,9 @@ done
 
 ```powershell
 New-Item -ItemType Directory -Force ".\.agents\skills" | Out-Null
-Copy-Item -Recurse -Force ".\director-skill\skills\*" ".\.agents\skills\"
+Get-ChildItem -LiteralPath ".\director-skill\skills" -Recurse -File -Filter SKILL.md | ForEach-Object {
+  Copy-Item -LiteralPath $_.Directory.FullName -Destination ".\.agents\skills" -Recurse -Force
+}
 ```
 
 Mở phiên mới để app nạp skill. Các skill tự bật theo ngữ cảnh công việc (tạo ảnh/keyframe → `image`, phân cảnh/quay dựng → `video`, giao đấu/combat → `writing-fight-scene-prompts`), hoặc có thể gọi trực tiếp theo tên skill.
