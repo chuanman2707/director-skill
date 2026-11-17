@@ -8,6 +8,21 @@ Bộ skill đạo diễn toàn diện để thiết kế hình ảnh, phân cả
 | [video](skills/video/SKILL.md) | Đạo diễn kịch bản phân cảnh, nhịp dựng điện ảnh (dramaturgy, Murch Rule of Six, 3-detail check, beat map) và viết prompt video cho Seedance 2.5, Kling 3.0, Veo 3.1, Runway, Luma, Sora… |
 | [writing-fight-scene-prompts](skills/writing-fight-scene-prompts/SKILL.md) | Viết hoặc sửa prompt cho cảnh đánh nhau, giao đấu, đấu phép (MiniMax H3, Seedance, Kling, Veo…), hoặc khi clip đánh nhau ra chậm, bồng bềnh, đứng im, không có hiệu ứng va chạm. |
 
+## Sáu skill đạo diễn short drama
+
+Các ví dụ Diablo IV lấy số shot từ mục *Breakdown* của *Diablo IV – Announcement Cinematic (BlizzCon 2019)*. Mỗi skill có thêm một cảnh thuộc thể loại khác để thử cùng thủ pháp.
+
+| Khi anh cần | Gọi skill | Đầu ra |
+|---|---|---|
+| Gài manh mối và chọn lúc tiết lộ | [staging-clues-and-reveals](skills/staging-clues-and-reveals/SKILL.md) | Bảng đối chiếu điều khán giả và nhân vật biết qua từng nhịp |
+| Mở tập bằng một hình ảnh báo trước | [directing-cold-opens](skills/directing-cold-opens/SKILL.md) | Phương án dựng mở đầu, cảnh nối và điểm trả lời về sau |
+| Tìm đoạn nên giữ, rút hoặc dời | [auditing-emotional-pacing](skills/auditing-emotional-pacing/SKILL.md) | Bản kiểm nhịp cảm xúc gắn với hành động hoặc timecode |
+| Cho màu và ánh sáng đổi theo câu chuyện | [designing-color-arcs](skills/designing-color-arcs/SKILL.md) | Kịch bản màu với tác nhân đổi và mốc nối giữa các shot |
+| Chỉ đạo hai diễn viên trong cảnh đổi thế chủ động | [directing-two-handers](skills/directing-two-handers/SKILL.md) | Nhịp diễn, tín hiệu cho bạn diễn và điểm đặt máy |
+| Ra mắt nhân vật theo từng phần | [staging-character-entrances](skills/staging-character-entrances/SKILL.md) | Shot list cho thấy khán giả nhận ra điều gì ở mỗi hình |
+
+Xem cách chọn và phối hợp các skill trong [AGENTS.md](AGENTS.md).
+
 ## Cài đặt
 
 Lấy repo về (repo private, cần quyền đọc):
@@ -24,7 +39,7 @@ Rồi chép các thư mục con trong `skills/` vào nơi app đọc skill:
 | Codex (CLI, app, IDE) | `~/.agents/skills/<tên-skill>/` (bản cũ: `~/.codex/skills/`) | `<dự án>/.agents/skills/<tên-skill>/` |
 | Antigravity | `~/.gemini/config/skills/<tên-skill>/` (bản cũ: `~/.gemini/antigravity/skills/`) | `<dự án>/.agents/skills/<tên-skill>/` |
 
-### Cài cả bộ 3 skill (Global cho cả 3 app)
+### Cài cả bộ 9 skill (Global cho cả 3 app)
 
 Windows (PowerShell):
 

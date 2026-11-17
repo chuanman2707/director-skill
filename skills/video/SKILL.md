@@ -14,6 +14,17 @@ A beautiful frame without dramaturgy is wallpaper. A dramaturgically clean promp
 
 - **No idea or script yet** (user wants a concept, a Big Idea, a campaign, an ad scenario — not a prompt): if the `creative-director` skill is installed, start there — it develops ideas and scripts for commercials and beyond ([github.com/smixs/creative-director-skill](https://github.com/smixs/creative-director-skill)). Come back here once there is a script to shoot.
 - **Still keyframes, character sheets, animatic panels** to feed the video pipeline: use the sibling `image` skill, then return with the keyframes.
+- **A short drama needs a specific directing decision** — choose the matching sibling skill below. Its output can feed a treatment, beat sheet or shot list. Continue with the model-specific workflow when the request also calls for a generation prompt.
+
+  | Directing task | Skill |
+  |---|---|
+  | Plant clues and decide what viewers and characters know at each reveal | [Gài manh mối và chọn lúc tiết lộ](../staging-clues-and-reveals/SKILL.md) |
+  | Cut a glimpse of a later event into the episode opening | [Dựng mở đầu bằng hình ảnh báo trước](../directing-cold-opens/SKILL.md) |
+  | Find where emotional expectation changes and where to hold or trim | [Kiểm tra nhịp cảm xúc](../auditing-emotional-pacing/SKILL.md) |
+  | Motivate a color or light change across beats and match it across shots | [Thiết kế màu và ánh sáng theo bước ngoặt](../designing-color-arcs/SKILL.md) |
+  | Direct two performers through a shift in leverage | [Đạo diễn cảnh hai người đổi thế chủ động](../directing-two-handers/SKILL.md) |
+  | Introduce a character's presence, identity, role or scale in stages | [Dàn cảnh ra mắt nhân vật](../staging-character-entrances/SKILL.md) |
+
 - **A script or scene exists and needs prompts** — this skill. Continue below.
 
 ---
