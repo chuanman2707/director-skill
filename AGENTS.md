@@ -6,6 +6,7 @@ Người dùng có thể mô tả việc cần làm bằng tiếng Việt hoặc
 |---|---|---|
 | Thiết kế nhân vật, bối cảnh, poster, khung storyboard tĩnh hoặc keyframe | [image](skills/image/SKILL.md) | Prompt ảnh mô tả chủ thể, bố cục và các chi tiết cần giữ nhất quán |
 | Chuyển kịch bản thành phân cảnh, chọn cỡ cảnh và chuyển động máy, hoặc viết prompt video theo model | [video](skills/video/SKILL.md) | Bản phân cảnh, shot list hoặc prompt chuyển động theo yêu cầu |
+| Viết, sửa hoặc kiểm tra prompt cho MiniMax H3 | [h3-prompt-writing của MiniMax](.agents/skills/h3-prompt-writing/SKILL.md) | Prompt Ref2VA sáu mục theo [quy trình H3 của dự án](#viết-prompt-minimax-h3) |
 | Viết hoặc sửa prompt cho cảnh giao đấu, nhất là khi chuyển động thiếu lực hoặc khó đọc trên màn hình | [writing-fight-scene-prompts](skills/writing-fight-scene-prompts/SKILL.md) | Prompt cảnh giao đấu theo nhịp hành động, phản ứng và chuyển động máy |
 | **1. Mở tập bằng hình ảnh báo trước.** Cho thấy một khoảnh khắc ở cuối tập nhưng vẫn giữ được câu hỏi dẫn vào chuyện | [directing-cold-opens](skills/directing-cold-opens/SKILL.md) | Chuỗi shot mở màn, điểm trở về mạch chính và cảnh trả lời câu hỏi |
 | **2. Gài manh mối và chọn lúc tiết lộ.** Cần quyết định khán giả biết bí mật trước, sau hay cùng lúc với nhân vật | [staging-clues-and-reveals](skills/staging-clues-and-reveals/SKILL.md) | Bảng theo từng nhịp ghi ai đang nghi, ai đã biết chắc và bằng chứng nào cho phép họ biết |
@@ -19,6 +20,21 @@ Người dùng có thể mô tả việc cần làm bằng tiếng Việt hoặc
 - **“Mở tập bằng cảnh con gái xé lá thư. Cuối tập mới cho biết ai viết.”** Dùng `staging-clues-and-reveals` để chốt lúc tên người viết được lộ, rồi dùng `directing-cold-opens` để chọn phần lá thư được thấy ở đầu tập.
 - **“Khán giả đã biết mặt bà chủ quán. Cho họ thấy cả phòng đợi bà gật đầu.”** Dùng `staging-character-entrances` để lộ vai trò qua phản ứng của cả phòng. Nếu trọng tâm chuyển sang cuộc mặc cả giữa bà và một nhân viên, dùng `directing-two-handers` cho cuộc đối đáp đó.
 - **“Chia cảnh chờ tin thành các shot, rồi viết prompt cho Kling.”** Dùng `video` để lên shot list và viết prompt. Nếu người dùng đã có bản dựng và hỏi nên giữ hay rút khoảng im trước tiếng chuông, dùng `auditing-emotional-pacing` để trả lời trực tiếp.
+
+## Viết prompt MiniMax H3
+
+Dự án này chỉ dùng **Ref2VA** cho MiniMax H3. Khi người dùng nói “H3”, viết và kiểm tra prompt theo [h3-prompt-writing](.agents/skills/h3-prompt-writing/SKILL.md) và [mẫu Ref2VA chính thức](.agents/skills/h3-prompt-writing/references/ref-en.txt). Trình bày nhận xét cho người dùng bằng tiếng Việt. Viết sáu mục của bản gửi H3 bằng tiếng Anh, giữ ngôn ngữ gốc của lời thoại, lời hát và chữ thực sự xuất hiện trên hình.
+
+| Mục trong prompt, theo đúng thứ tự | Nội dung cần viết |
+|---|---|
+| `subject_definitions` | Mỗi đối tượng cần theo dõi có một dòng. Dùng `<Subject N>` cho nhân vật, đạo cụ hoặc bối cảnh lấy từ tư liệu. Nếu ảnh chỉ cung cấp bối cảnh, dẫn `<Picture N>` ngay trong định nghĩa đó. Dùng `<Video N>` cho đường máy, nhịp dựng hoặc clip nguồn. Chỉ khai báo `<Audio N>` khi thực sự dùng âm thanh tham chiếu. |
+| `summary` | Mở bằng loại tác vụ trong ngoặc vuông. Ví dụ, ảnh cung cấp bối cảnh và previz cung cấp đường máy thì dùng `[reference generation]`. Tóm tắt cảnh và vai trò của các nguồn trong một đoạn ngắn. |
+| `retention_analysis` | Mỗi nhãn được khai báo riêng có một dòng ghi vị trí hoặc phạm vi áp dụng, mức giữ lại theo mẫu và đặc điểm cụ thể. Ví dụ, nếu cần khớp đường máy suốt clip, ghi `fully_preserved` cho vai trò đường máy của `<Video 1>`. |
+| `detailed_description` | Viết 1–2 câu về phong cách trước `[Shot 1]`. Mô tả hình, hành động, máy và tiếng theo thứ tự phát, gắn nhãn nguồn đúng lúc nội dung đó xuất hiện. Một cú máy liên tục chỉ có một nhãn shot, các mốc giây nằm trong lời mô tả. Khi thật sự cắt, dùng dạng `[Shot 2] At 00:03.500, …`. |
+| `overall_soundscape` | Tóm tắt âm nền và âm thanh vật lý xuyên suốt cảnh. Tiếng cần đồng bộ với một hành động cụ thể cũng được đặt đúng nhịp trong phần mô tả shot. |
+| `non_diegetic_music` | Mô tả phần nhạc chỉ khán giả nghe. Nếu cảnh chỉ có tiếng tại hiện trường, ghi `N/A`. |
+
+Khi kiểm tra, đối chiếu vai trò và tên nhãn giữa cả sáu mục, mốc hành động với thời lượng, và bố cục cuối với diễn biến nhìn thấy trong shot. Với nhân vật có thoại, giữ cùng ID người nói như `(S1)` và đặt lời thoại trong thẻ như `<d>[Vietnamese] Cho tôi xuống đây.</d>`.
 
 ## Phim samurai Nhật Bản
 
